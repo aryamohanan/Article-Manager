@@ -1,0 +1,13 @@
+{
+  "dev": {
+    "driver":"pg",
+    "user": { "ENV": "postgresDbUserName" },
+    "password": { "ENV": "postgresDbPassword" },
+    "host": { "ENV": "postgresContactPoint" },
+    "port": { "ENV": "postgresPort" },
+    "schema": { "ENV": "postgresSchema" },
+    "database": { "ENV": "postgresDatabase" }
+  },
+  "edge": {
+  }
+}
