@@ -35,12 +35,19 @@ exports.up = function(db) {
       articleId: { type: 'int'},
       isLiked: { type: 'boolean' },
       isViewed: { type: 'boolean' }
+    }),
+    , 
+    db.createTable('notification', {
+      id: { type: 'serial', primaryKey: true },
+      to: { type: 'text'},
+      subject: { type: 'text'},
+      body: { type: 'text' }
     })
   ])
 };
 
 exports.down = function(db) {
-  return Promise.all([db.dropTable('articles'),db.dropTable('users'),db.dropTable('article_user_mapping')])
+  return Promise.all([db.dropTable('articles'),db.dropTable('users'),db.dropTable('article_user_mapping'),,db.dropTable('notification')])
 };
 
 

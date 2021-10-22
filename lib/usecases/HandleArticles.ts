@@ -1,7 +1,9 @@
 import { Articles } from "lib/models/Articles";
 import {ActionRequest,ArticleUserMapping} from "lib/models/ArticleUserMapping";
 import { Action } from "lib/models/enum/Action";
+import { Notifications } from "lib/models/Notification";
 import { Users } from "lib/models/Users";
+import { userInfo } from "os";
 import { SendMail } from "./Notification/SendEmail";
 
 export class HandleArticles {
@@ -16,6 +18,7 @@ export class HandleArticles {
           const mailBody = `Hai ${article.author}, ${UserInfo.name} Liked your article ${article.title}`;
           const subject = "New updates on your article";
           SendMail.call(subject, mailBody);
+          await Notifications.insertRecord(article.author,subject,mailBody);
         }
       } else {
         console.log("invalid request received");
