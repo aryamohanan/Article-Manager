@@ -24,8 +24,8 @@ app.listen(port, () => {
 
 async function getDbConnections() {
   let connections = [];
-  if (!getConnectionManager().has('postgresDb')) {
-    await createConnection('postgresDb').then(() => console.log('created postgresDb connection'));
+  if (!getConnectionManager().has('default')) {
+    await createConnection('default').then(() => console.log('created postgresDb connection'));
   }
   return connections;
 }

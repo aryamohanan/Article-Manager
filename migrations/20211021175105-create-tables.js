@@ -23,16 +23,24 @@ exports.up = function(db) {
       body: { type: 'json'},
       noOfLikes: { type: 'int' },
       noOfViews: { type: 'int' }
-    }), 
+    }),
     db.createTable('users', {
       id: { type: 'serial', primaryKey: true },
-      name: { type: 'int'},
+      name: { type: 'text'},
+    })
+    , 
+    db.createTable('article_user_mapping', {
+      id: { type: 'serial', primaryKey: true },
+      userId: { type: 'int'},
+      articleId: { type: 'int'},
+      isLiked: { type: 'boolean' },
+      isViewed: { type: 'boolean' }
     })
   ])
 };
 
 exports.down = function(db) {
-  return Promise.all([db.dropTable('articles'),db.dropTable('users')])
+  return Promise.all([db.dropTable('articles'),db.dropTable('users'),db.dropTable('article_user_mapping')])
 };
 
 

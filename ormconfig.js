@@ -8,7 +8,7 @@ const testDb = {
   logging: false
 } 
 const postgresDb = {
-  name: 'postgresDb',
+  name: 'default',
   "type": 'postgres',
   "host": process.env.postgresContactPoint,
   "port": process.env.postgresPort,
@@ -19,6 +19,6 @@ const postgresDb = {
   logging: false,
   "entities": ['.lib/models/!(*.spec)*.ts'],
 }
-const selectedDb = process.env.NODE_ENV == 'test' ? testDb : defaultDb;
+const selectedDb = process.env.NODE_ENV == 'test' ? testDb : postgresDb;
 module.exports = selectedDb;
 
