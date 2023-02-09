@@ -1,4 +1,4 @@
-# Article-Manager
+# Article-Manager- node app
 ## Run the application
 npm install
  
